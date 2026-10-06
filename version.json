@@ -1,0 +1,13 @@
+{
+    "android":  {
+                    "versionCode":  6,
+                    "versionName":  "1.6.0",
+                    "url":  "https://github.com/Vegeyapfel/dl-k7x3/releases/download/v1.6.0/2Flow.apk"
+                },
+    "windows":  {
+                    "version":  "1.6.0",
+                    "url":  "https://github.com/Vegeyapfel/dl-k7x3/releases/download/v1.6.0/2Flow-Setup.msi"
+                },
+    "page":  "https://Vegeyapfel.github.io/dl-k7x3/",
+    "notes":  "Erste Testversion für Freunde:\n- Text, Screenshots, Bilder und Dateien zwischen Handy und PC\n- PC → Handy automatisch beim Kopieren\n- Handy → PC per schwebender Blase, „An 2Flow senden“ oder Teilen\n- Empfangene Fotos landen in der Galerie und in der Zwischenablage\n- Neu: Update-Hinweis direkt in der App"
+}

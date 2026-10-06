@@ -1,1 +1,205 @@
-<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><title>…</title>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2Flow – Download</title>
+  <meta name="description" content="Auf einem Gerät kopieren, auf dem anderen einfügen. Direkt über dein WLAN, verschlüsselt, ohne Cloud.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234F46E5'/%3E%3Cstop offset='1' stop-color='%237C3AED'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='url(%23g)'/%3E%3Cpath d='M15 26h30M39 20l6 6-6 6' stroke='%23fff' stroke-width='4.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M49 38H19M25 32l-6 6 6 6' stroke='%23fff' stroke-opacity='.75' stroke-width='4.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #fbf8ff; --surface: #ffffff; --surface-2: #f2effa; --text: #1b1b21; --muted: #5b5a66;
+      --line: #e3e0ec; --primary: #4f46e5; --primary-2: #7c3aed; --on-primary: #fff; --ok: #16a34a;
+      --shadow: 0 1px 2px rgba(20, 16, 60, .06), 0 8px 30px rgba(20, 16, 60, .08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111116; --surface: #1a1a21; --surface-2: #22222b; --text: #ecebf3; --muted: #a3a1b2;
+        --line: #2e2d38; --primary: #8b85ff; --primary-2: #b18cff; --on-primary: #0f0d2e;
+        --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 30px rgba(0, 0, 0, .35);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+    header { padding: 56px 0 28px; text-align: center; }
+    .logo {
+      width: 76px; height: 76px; border-radius: 22px; margin: 0 auto 18px; display: grid; place-items: center;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed); box-shadow: 0 10px 30px rgba(79, 70, 229, .35);
+    }
+    h1 { font-size: clamp(30px, 6vw, 46px); line-height: 1.1; margin: 0 0 12px; letter-spacing: -.02em; }
+    .lead { font-size: clamp(17px, 2.6vw, 20px); color: var(--muted); margin: 0 auto; max-width: 560px; }
+    .badge {
+      display: inline-block; margin-top: 18px; padding: 5px 12px; border-radius: 999px; font-size: 13px; font-weight: 600;
+      background: var(--surface-2); color: var(--muted); border: 1px solid var(--line);
+    }
+    .downloads { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin: 28px 0 8px; }
+    .dl {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px;
+      box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px;
+    }
+    .dl.recommended { border-color: var(--primary); box-shadow: 0 0 0 1px var(--primary), var(--shadow); }
+    .dl h2 { margin: 0; font-size: 20px; display: flex; align-items: center; gap: 10px; }
+    .dl .meta { color: var(--muted); font-size: 14px; margin: 0; }
+    .btn {
+      display: inline-flex; justify-content: center; align-items: center; gap: 8px; padding: 14px 18px; border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: var(--on-primary);
+      text-decoration: none; font-weight: 650; font-size: 16px; margin-top: auto;
+    }
+    .btn:hover { filter: brightness(1.06); }
+    .btn:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+    .hint { font-size: 13px; color: var(--muted); text-align: center; margin: 0; }
+    section { margin: 48px 0; }
+    section > h2 { font-size: 24px; margin: 0 0 16px; letter-spacing: -.01em; }
+    .steps { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); counter-reset: s; }
+    .step { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
+    .step::before {
+      counter-increment: s; content: counter(s); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%;
+      background: var(--surface-2); color: var(--primary); font-weight: 700; margin-bottom: 10px;
+    }
+    .step h3 { margin: 0 0 6px; font-size: 17px; }
+    .step p { margin: 0; color: var(--muted); font-size: 15px; }
+    details {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 4px 18px; margin-bottom: 12px;
+    }
+    summary { cursor: pointer; padding: 14px 0; font-weight: 650; }
+    details ol { margin: 0 0 16px; padding-left: 20px; color: var(--text); }
+    details li { margin: 6px 0; }
+    .muted { color: var(--muted); }
+    .features { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .feature { display: flex; gap: 12px; align-items: flex-start; }
+    .feature .dot { flex: none; width: 10px; height: 10px; border-radius: 50%; margin-top: 8px; background: var(--primary); }
+    .privacy { background: var(--surface-2); border-radius: 20px; padding: 22px; }
+    .privacy ul { margin: 8px 0 0; padding-left: 20px; }
+    .notes { white-space: pre-line; color: var(--muted); }
+    footer { color: var(--muted); font-size: 14px; text-align: center; padding: 32px 0 48px; border-top: 1px solid var(--line); }
+    kbd { font: 13px ui-monospace, Consolas, monospace; background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo" aria-hidden="true">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 17h24M26 11l6 6-6 6"/><path d="M36 27H12M18 21l-6 6 6 6" stroke-opacity=".75"/>
+        </svg>
+      </div>
+      <h1>Kopieren. Drüben einfügen.</h1>
+      <p class="lead">2Flow bringt Text, Bilder und Dateien in Sekunden zwischen Handy und PC – direkt über dein WLAN, verschlüsselt, ohne Cloud und ohne Konto.</p>
+      <span class="badge">Testversion · für Freunde &amp; Familie</span>
+    </header>
+
+    <div class="downloads">
+      <div class="dl" id="dl-android">
+        <h2>📱 Android</h2>
+        <p class="meta">Ab Android 8 · <span data-version="android">neueste Version</span></p>
+        <a class="btn" data-link="android" href="https://github.com/Vegeyapfel/dl-k7x3/releases/latest/download/2Flow.apk">App herunterladen</a>
+      </div>
+      <div class="dl" id="dl-windows">
+        <h2>💻 Windows</h2>
+        <p class="meta">Windows 10 und 11 · <span data-version="windows">neueste Version</span></p>
+        <a class="btn" data-link="windows" href="https://github.com/Vegeyapfel/dl-k7x3/releases/latest/download/2Flow-Setup.msi">Installer herunterladen</a>
+      </div>
+    </div>
+    <p class="hint">Updates bekommst du automatisch angezeigt – einfach über die alte Version installieren.</p>
+
+    <section>
+      <h2>So funktioniert's</h2>
+      <div class="steps">
+        <div class="step"><h3>Auf beiden Geräten installieren</h3><p>Handy und PC – beide im selben WLAN.</p></div>
+        <div class="step"><h3>Einmal koppeln</h3><p>Die Geräte finden sich von selbst. Beide zeigen denselben Code – bestätigen, fertig.</p></div>
+        <div class="step"><h3>Kopieren &amp; einfügen</h3><p>Am PC <kbd>Strg</kbd>+<kbd>C</kbd> – schon auf dem Handy. Am Handy die 2Flow-Blase antippen – schon am PC.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Installation</h2>
+      <details id="howto-android">
+        <summary>Android: Schritt für Schritt</summary>
+        <ol>
+          <li>Oben auf <b>„App herunterladen“</b> tippen. Warnt der Browser, <b>„Trotzdem herunterladen“</b> wählen.</li>
+          <li>Die heruntergeladene Datei öffnen (Benachrichtigung oder App <i>Dateien</i> → <i>Downloads</i>).</li>
+          <li>Beim ersten Mal fragt Android, ob dein Browser Apps installieren darf: <b>Einstellungen</b> → <b>„Aus dieser Quelle zulassen“</b> → zurück → <b>Installieren</b>.</li>
+          <li>Meldet sich <i>Google Play Protect</i>: <b>„Trotzdem installieren“</b> – die App kommt nicht aus dem Play Store, daher die Warnung.</li>
+          <li>2Flow öffnen – die Einrichtung führt dich durch den Rest.</li>
+        </ol>
+        <p class="muted">Für die schwebende Blase: Meldet Android „Zugriff verweigert“, in den <i>App-Infos</i> von 2Flow oben rechts auf ⋮ → <b>„Eingeschränkte Einstellungen zulassen“</b>.</p>
+      </details>
+      <details id="howto-windows">
+        <summary>Windows: Schritt für Schritt</summary>
+        <ol>
+          <li>Oben auf <b>„Installer herunterladen“</b> klicken und die Datei öffnen.</li>
+          <li>Erscheint <i>„Der Computer wurde durch Windows geschützt“</i>: auf <b>„Weitere Informationen“</b> und dann <b>„Trotzdem ausführen“</b> klicken. (Die Testversion ist noch nicht digital signiert.)</li>
+          <li>Die Installation läuft ohne Administratorrechte durch; 2Flow startet danach im Infobereich der Taskleiste.</li>
+          <li>Fragt die Windows-Firewall nach: <b>„Zugriff zulassen“</b> – sonst kann der PC nichts empfangen.</li>
+          <li>Im 2Flow-Fenster auf <b>„Handy hinzufügen“</b> klicken: Der QR-Code bringt die App direkt aufs Handy.</li>
+        </ol>
+      </details>
+    </section>
+
+    <section>
+      <h2>Was 2Flow kann</h2>
+      <div class="features">
+        <div class="feature"><span class="dot"></span><div><b>PC → Handy automatisch</b><br><span class="muted">Text, Screenshots und kopierte Dateien landen sofort auf dem Handy.</span></div></div>
+        <div class="feature"><span class="dot"></span><div><b>Handy → PC mit einem Tipp</b><br><span class="muted">Schwebende Blase, „An 2Flow senden“ im Textmenü oder Teilen → 2Flow.</span></div></div>
+        <div class="feature"><span class="dot"></span><div><b>Direkt in der Zwischenablage</b><br><span class="muted">Empfangenes einfach mit Strg+V bzw. Einfügen verwenden.</span></div></div>
+        <div class="feature"><span class="dot"></span><div><b>Drag &amp; Drop am PC</b><br><span class="muted">Dateien ins 2Flow-Fenster ziehen – Fotos landen in der Galerie.</span></div></div>
+      </div>
+    </section>
+
+    <section class="privacy">
+      <h2 style="margin-top:0">Privat und lokal</h2>
+      <ul>
+        <li>Deine Inhalte gehen <b>direkt von Gerät zu Gerät</b> – nie über einen Server oder eine Cloud.</li>
+        <li>Jede Verbindung ist <b>Ende-zu-Ende verschlüsselt</b> (TLS 1.3); nur gekoppelte Geräte können sich etwas schicken.</li>
+        <li>Kein Konto, keine Werbung, keine Analytics. Der Verlauf liegt nur im Arbeitsspeicher und löscht sich selbst.</li>
+        <li>Einzige Internet-Anfrage: die optionale Suche nach Updates auf dieser Seite – ohne Daten von dir.</li>
+      </ul>
+    </section>
+
+    <section id="changes" hidden>
+      <h2>Neu in dieser Version</h2>
+      <p class="notes" id="notes"></p>
+    </section>
+  </div>
+  <footer>2Flow ist ein privates Testprojekt. Fragen oder Fehler? Sag einfach dem Menschen Bescheid, der dir diesen Link geschickt hat.</footer>
+
+  <script>
+    // Highlight the right download for this device and show the current version numbers.
+    (function () {
+      var ua = navigator.userAgent || "";
+      var isAndroid = /Android/i.test(ua);
+      var isWindows = /Windows/i.test(ua);
+      if (isAndroid) {
+        document.getElementById("dl-android").classList.add("recommended");
+        document.getElementById("howto-android").open = true;
+      } else if (isWindows) {
+        document.getElementById("dl-windows").classList.add("recommended");
+        document.getElementById("howto-windows").open = true;
+        var downloads = document.querySelector(".downloads");
+        downloads.insertBefore(document.getElementById("dl-windows"), downloads.firstChild);
+      }
+      fetch("version.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (v) {
+        if (!v) return;
+        if (v.android) {
+          document.querySelector('[data-version="android"]').textContent = "Version " + v.android.versionName;
+          document.querySelector('[data-link="android"]').href = v.android.url;
+        }
+        if (v.windows) {
+          document.querySelector('[data-version="windows"]').textContent = "Version " + v.windows.version;
+          document.querySelector('[data-link="windows"]').href = v.windows.url;
+        }
+        if (v.notes) {
+          document.getElementById("notes").textContent = v.notes;
+          document.getElementById("changes").hidden = false;
+        }
+      }).catch(function () {});
+    })();
+  </script>
+</body>
+</html>
