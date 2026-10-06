@@ -1,13 +1,13 @@
 {
     "android":  {
-                    "versionCode":  7,
-                    "versionName":  "1.7.0",
-                    "url":  "https://github.com/Vegeyapfel/dl-k7x3/releases/download/v1.7.0/2Flow.apk"
+                    "versionCode":  8,
+                    "versionName":  "1.8.0",
+                    "url":  "https://github.com/Vegeyapfel/dl-k7x3/releases/download/v1.8.0/2Flow.apk"
                 },
     "windows":  {
-                    "version":  "1.7.0",
-                    "url":  "https://github.com/Vegeyapfel/dl-k7x3/releases/download/v1.7.0/2Flow-Setup.msi"
+                    "version":  "1.8.0",
+                    "url":  "https://github.com/Vegeyapfel/dl-k7x3/releases/download/v1.8.0/2Flow-Setup.msi"
                 },
     "page":  "https://vegeyapfel.github.io/dl-k7x3/",
-    "notes":  "Verbesserungen:\n- PC: Fenster kommt beim erneuten Öffnen zuverlässig nach vorne\n- PC: aufgeräumteres Design, dunkle Titelleiste im dunklen Modus\n- PC: deutlich kleinerer Installer\n- Handy: Hinweis für Samsung-Geräte beim Update"
+    "notes":  "Verbesserungen:\n- Gekoppelte Geräte werden zuverlässig als verbunden angezeigt, auch wenn das Handy-Display aus ist\n- Handy und PC prüfen im Hintergrund kurz, ob gekoppelte Geräte erreichbar sind\n"
 }
