@@ -1,13 +1,13 @@
 {
     "android":  {
-                    "versionCode":  9,
-                    "versionName":  "1.9.0",
-                    "url":  "https://github.com/Vegeyapfel/dl-k7x3/releases/download/v1.9.0/2Near.apk"
+                    "versionCode":  10,
+                    "versionName":  "1.9.1",
+                    "url":  "https://github.com/Vegeyapfel/dl-k7x3/releases/download/v1.9.1/NearConnect.apk"
                 },
     "windows":  {
-                    "version":  "1.9.0",
-                    "url":  "https://github.com/Vegeyapfel/dl-k7x3/releases/download/v1.9.0/2Near-Setup.msi"
+                    "version":  "1.9.1",
+                    "url":  "https://github.com/Vegeyapfel/dl-k7x3/releases/download/v1.9.1/NearConnect-Setup.msi"
                 },
     "page":  "https://vegeyapfel.github.io/dl-k7x3/",
-    "notes":  "2Flow heißt jetzt 2Near!\n\nNeu:\n- Neuer Name 2Near – alles andere bleibt: deine gekoppelten Geräte und Einstellungen funktionieren weiter\n- Empfangene Dateien landen ab jetzt in Downloads/2Near bzw. im Album 2Near\n- Kleinere Verbesserungen und Fehlerbehebungen\n"
+    "notes":  "Der finale Name: NearConnect!\n\n- 2Flow bzw. 2Near heißt ab jetzt NearConnect – deine gekoppelten Geräte und Einstellungen bleiben erhalten\n- Empfangene Dateien landen in Downloads/NearConnect bzw. im Album NearConnect\n"
 }
