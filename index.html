@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2Flow – Download</title>
+  <title>2Near – Download</title>
   <meta name="description" content="Auf einem Gerät kopieren, auf dem anderen einfügen. Direkt über dein WLAN, verschlüsselt, ohne Cloud.">
   <meta name="robots" content="noindex">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234F46E5'/%3E%3Cstop offset='1' stop-color='%237C3AED'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='url(%23g)'/%3E%3Cpath d='M15 26h30M39 20l6 6-6 6' stroke='%23fff' stroke-width='4.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M49 38H19M25 32l-6 6 6 6' stroke='%23fff' stroke-opacity='.75' stroke-width='4.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
@@ -43,6 +43,8 @@
       background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px;
       box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px;
     }
+    .dl.soon { background: var(--surface-2); box-shadow: none; }
+    .dl.soon .btn { background: transparent; color: var(--muted); border: 1px dashed var(--line); cursor: default; }
     .dl.recommended { border-color: var(--primary); box-shadow: 0 0 0 1px var(--primary), var(--shadow); }
     .dl h2 { margin: 0; font-size: 20px; display: flex; align-items: center; gap: 10px; }
     .dl .meta { color: var(--muted); font-size: 14px; margin: 0; }
@@ -71,6 +73,11 @@
     details ol { margin: 0 0 16px; padding-left: 20px; color: var(--text); }
     details li { margin: 6px 0; }
     .muted { color: var(--muted); }
+    .matrix { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; font-size: 15px; }
+    .matrix th, .matrix td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--line); }
+    .matrix tr:last-child td { border-bottom: 0; }
+    .matrix th { background: var(--surface-2); font-size: 13px; color: var(--muted); font-weight: 650; }
+    .yes { color: var(--ok); font-weight: 650; }
     .features { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
     .feature { display: flex; gap: 12px; align-items: flex-start; }
     .feature .dot { flex: none; width: 10px; height: 10px; border-radius: 50%; margin-top: 8px; background: var(--primary); }
@@ -90,7 +97,7 @@
         </svg>
       </div>
       <h1>Kopieren. Drüben einfügen.</h1>
-      <p class="lead">2Flow bringt Text, Bilder und Dateien in Sekunden zwischen Handy und PC – direkt über dein WLAN, verschlüsselt, ohne Cloud und ohne Konto.</p>
+      <p class="lead">2Near bringt Text, Bilder und Dateien in Sekunden zwischen Handy und PC – direkt über dein WLAN, verschlüsselt, ohne Cloud und ohne Konto.</p>
       <span class="badge">Testversion · für Freunde &amp; Familie</span>
     </header>
 
@@ -98,14 +105,20 @@
       <div class="dl" id="dl-android">
         <h2>📱 Android</h2>
         <p class="meta">Ab Android 8 · <span data-version="android">neueste Version</span></p>
-        <a class="btn" data-link="android" href="https://github.com/Vegeyapfel/dl-k7x3/releases/latest/download/2Flow.apk">App herunterladen</a>
+        <a class="btn" data-link="android" href="https://github.com/Vegeyapfel/dl-k7x3/releases/latest/download/2Near.apk">App herunterladen</a>
       </div>
       <div class="dl" id="dl-windows">
         <h2>💻 Windows</h2>
         <p class="meta">Windows 10 und 11 · <span data-version="windows">neueste Version</span></p>
-        <a class="btn" data-link="windows" href="https://github.com/Vegeyapfel/dl-k7x3/releases/latest/download/2Flow-Setup.msi">Installer herunterladen</a>
+        <a class="btn" data-link="windows" href="https://github.com/Vegeyapfel/dl-k7x3/releases/latest/download/2Near-Setup.msi">Installer herunterladen</a>
+      </div>
+      <div class="dl soon" id="dl-apple">
+        <h2>🍎 iPhone, iPad &amp; Mac</h2>
+        <p class="meta">In Arbeit – noch nicht verfügbar</p>
+        <span class="btn" aria-disabled="true">Kommt bald</span>
       </div>
     </div>
+    <p class="hint" id="apple-hint" hidden>Für iPhone und iPad gibt es 2Near noch nicht. Öffne diese Seite auf deinem Android-Handy oder Windows-PC.</p>
     <p class="hint">Updates bekommst du automatisch angezeigt – einfach über die alte Version installieren.</p>
 
     <section>
@@ -113,8 +126,20 @@
       <div class="steps">
         <div class="step"><h3>Auf beiden Geräten installieren</h3><p>Handy und PC – beide im selben WLAN.</p></div>
         <div class="step"><h3>Einmal koppeln</h3><p>Die Geräte finden sich von selbst. Beide zeigen denselben Code – bestätigen, fertig.</p></div>
-        <div class="step"><h3>Kopieren &amp; einfügen</h3><p>Am PC <kbd>Strg</kbd>+<kbd>C</kbd> – schon auf dem Handy. Am Handy die 2Flow-Blase antippen – schon am PC.</p></div>
+        <div class="step"><h3>Kopieren &amp; einfügen</h3><p>Am PC <kbd>Strg</kbd>+<kbd>C</kbd> – schon auf dem Handy. Am Handy die 2Near-Blase antippen – schon am PC.</p></div>
       </div>
+    </section>
+
+    <section>
+      <h2>Welche Geräte passen zusammen?</h2>
+      <table class="matrix">
+        <tr><th>Verbindung</th><th>Status</th></tr>
+        <tr><td>Handy ↔ PC (Android ↔ Windows)</td><td class="yes">✓ funktioniert</td></tr>
+        <tr><td>Handy ↔ Handy, Tablet (Android ↔ Android)</td><td class="yes">✓ funktioniert</td></tr>
+        <tr><td>PC ↔ PC (Windows ↔ Windows)</td><td class="yes">✓ funktioniert</td></tr>
+        <tr><td>iPhone, iPad, Mac</td><td class="muted">in Arbeit</td></tr>
+      </table>
+      <p class="muted">Alle Android-Geräte ab Android 8 – Samsung, Pixel, Xiaomi, OnePlus und Co. Beliebig viele Geräte, jedes wird einmal gekoppelt. Einzige Voraussetzung: alle im selben WLAN (Gäste-WLANs blockieren Verbindungen zwischen Geräten oft).</p>
     </section>
 
     <section>
@@ -123,33 +148,33 @@
         <summary>Android: Schritt für Schritt</summary>
         <ol>
           <li>Oben auf <b>„App herunterladen“</b> tippen. Warnt der Browser, <b>„Trotzdem herunterladen“</b> wählen.</li>
-          <li><b>Samsung-Handy?</b> Dort blockiert der <i>Automatische Blocker</i> Apps, die nicht aus einem Store kommen. Kurz ausschalten: <b>Einstellungen → Sicherheit und Datenschutz → Automatischer Blocker → aus</b>. Nach der Installation kannst du ihn wieder einschalten – 2Flow läuft trotzdem weiter. Nur zum Installieren eines Updates musst du ihn jeweils kurz ausschalten.</li>
+          <li><b>Samsung-Handy?</b> Dort blockiert der <i>Automatische Blocker</i> Apps, die nicht aus einem Store kommen. Kurz ausschalten: <b>Einstellungen → Sicherheit und Datenschutz → Automatischer Blocker → aus</b>. Nach der Installation kannst du ihn wieder einschalten – 2Near läuft trotzdem weiter. Nur zum Installieren eines Updates musst du ihn jeweils kurz ausschalten.</li>
           <li>Die heruntergeladene Datei öffnen (Benachrichtigung oder App <i>Dateien</i> → <i>Downloads</i>).</li>
           <li>Beim ersten Mal fragt Android, ob dein Browser Apps installieren darf: <b>Einstellungen</b> → <b>„Aus dieser Quelle zulassen“</b> → zurück → <b>Installieren</b>.</li>
           <li>Meldet sich <i>Google Play Protect</i>: <b>„Trotzdem installieren“</b> – die App kommt nicht aus dem Play Store, daher die Warnung.</li>
-          <li>2Flow öffnen – die Einrichtung führt dich durch den Rest.</li>
+          <li>2Near öffnen – die Einrichtung führt dich durch den Rest.</li>
         </ol>
-        <p class="muted">Für die schwebende Blase: Meldet Android „Zugriff verweigert“, in den <i>App-Infos</i> von 2Flow oben rechts auf ⋮ → <b>„Eingeschränkte Einstellungen zulassen“</b>.</p>
+        <p class="muted">Für die schwebende Blase: Meldet Android „Zugriff verweigert“, in den <i>App-Infos</i> von 2Near oben rechts auf ⋮ → <b>„Eingeschränkte Einstellungen zulassen“</b>.</p>
       </details>
       <details id="howto-windows">
         <summary>Windows: Schritt für Schritt</summary>
         <ol>
           <li>Oben auf <b>„Installer herunterladen“</b> klicken und die Datei öffnen.</li>
           <li>Erscheint <i>„Der Computer wurde durch Windows geschützt“</i>: auf <b>„Weitere Informationen“</b> und dann <b>„Trotzdem ausführen“</b> klicken. (Die Testversion ist noch nicht digital signiert.)</li>
-          <li>Die Installation läuft ohne Administratorrechte durch; 2Flow startet danach im Infobereich der Taskleiste.</li>
+          <li>Die Installation läuft ohne Administratorrechte durch; 2Near startet danach im Infobereich der Taskleiste.</li>
           <li>Fragt die Windows-Firewall nach: <b>„Zugriff zulassen“</b> – sonst kann der PC nichts empfangen.</li>
-          <li>Im 2Flow-Fenster auf <b>„Handy hinzufügen“</b> klicken: Der QR-Code bringt die App direkt aufs Handy.</li>
+          <li>Im 2Near-Fenster auf <b>„Handy hinzufügen“</b> klicken: Der QR-Code bringt die App direkt aufs Handy.</li>
         </ol>
       </details>
     </section>
 
     <section>
-      <h2>Was 2Flow kann</h2>
+      <h2>Was 2Near kann</h2>
       <div class="features">
         <div class="feature"><span class="dot"></span><div><b>PC → Handy automatisch</b><br><span class="muted">Text, Screenshots und kopierte Dateien landen sofort auf dem Handy.</span></div></div>
-        <div class="feature"><span class="dot"></span><div><b>Handy → PC mit einem Tipp</b><br><span class="muted">Schwebende Blase, „An 2Flow senden“ im Textmenü oder Teilen → 2Flow.</span></div></div>
+        <div class="feature"><span class="dot"></span><div><b>Handy → PC mit einem Tipp</b><br><span class="muted">Schwebende Blase, „An 2Near senden“ im Textmenü oder Teilen → 2Near.</span></div></div>
         <div class="feature"><span class="dot"></span><div><b>Direkt in der Zwischenablage</b><br><span class="muted">Empfangenes einfach mit Strg+V bzw. Einfügen verwenden.</span></div></div>
-        <div class="feature"><span class="dot"></span><div><b>Drag &amp; Drop am PC</b><br><span class="muted">Dateien ins 2Flow-Fenster ziehen – Fotos landen in der Galerie.</span></div></div>
+        <div class="feature"><span class="dot"></span><div><b>Drag &amp; Drop am PC</b><br><span class="muted">Dateien ins 2Near-Fenster ziehen – Fotos landen in der Galerie.</span></div></div>
       </div>
     </section>
 
@@ -168,7 +193,7 @@
       <p class="notes" id="notes"></p>
     </section>
   </div>
-  <footer>2Flow ist ein privates Testprojekt. Fragen oder Fehler? Sag einfach dem Menschen Bescheid, der dir diesen Link geschickt hat.</footer>
+  <footer>2Near ist ein privates Testprojekt. Fragen oder Fehler? Sag einfach dem Menschen Bescheid, der dir diesen Link geschickt hat.</footer>
 
   <script>
     // Highlight the right download for this device and show the current version numbers.
@@ -176,6 +201,8 @@
       var ua = navigator.userAgent || "";
       var isAndroid = /Android/i.test(ua);
       var isWindows = /Windows/i.test(ua);
+      // iPadOS reports itself as a Mac; touch support tells them apart.
+      var isApple = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
       if (isAndroid) {
         document.getElementById("dl-android").classList.add("recommended");
         document.getElementById("howto-android").open = true;
@@ -184,6 +211,8 @@
         document.getElementById("howto-windows").open = true;
         var downloads = document.querySelector(".downloads");
         downloads.insertBefore(document.getElementById("dl-windows"), downloads.firstChild);
+      } else if (isApple) {
+        document.getElementById("apple-hint").hidden = false;
       }
       fetch("version.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (v) {
         if (!v) return;

@@ -1,13 +1,13 @@
 {
     "android":  {
-                    "versionCode":  8,
-                    "versionName":  "1.8.0",
-                    "url":  "https://github.com/Vegeyapfel/dl-k7x3/releases/download/v1.8.0/2Flow.apk"
+                    "versionCode":  9,
+                    "versionName":  "1.9.0",
+                    "url":  "https://github.com/Vegeyapfel/dl-k7x3/releases/download/v1.9.0/2Near.apk"
                 },
     "windows":  {
-                    "version":  "1.8.0",
-                    "url":  "https://github.com/Vegeyapfel/dl-k7x3/releases/download/v1.8.0/2Flow-Setup.msi"
+                    "version":  "1.9.0",
+                    "url":  "https://github.com/Vegeyapfel/dl-k7x3/releases/download/v1.9.0/2Near-Setup.msi"
                 },
     "page":  "https://vegeyapfel.github.io/dl-k7x3/",
-    "notes":  "Verbesserungen:\n- Gekoppelte Geräte werden zuverlässig als verbunden angezeigt, auch wenn das Handy-Display aus ist\n- Handy und PC prüfen im Hintergrund kurz, ob gekoppelte Geräte erreichbar sind\n"
+    "notes":  "2Flow heißt jetzt 2Near!\n\nNeu:\n- Neuer Name 2Near – alles andere bleibt: deine gekoppelten Geräte und Einstellungen funktionieren weiter\n- Empfangene Dateien landen ab jetzt in Downloads/2Near bzw. im Album 2Near\n- Kleinere Verbesserungen und Fehlerbehebungen\n"
 }
